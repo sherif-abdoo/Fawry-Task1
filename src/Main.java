@@ -1,15 +1,55 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.time.LocalDate;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Product cheese = new Product.Builder()
+                .name("Cheese")
+                .price(100)
+                .quantity(10)
+                .shippable(true)
+                .weight(200)
+                .exprireDate(LocalDate.now().plusDays(3))
+                .build();
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+        Product biscuits = new Product.Builder()
+                .name("Biscuits")
+                .price(150)
+                .quantity(5)
+                .shippable(true)
+                .weight(700)
+                .exprireDate(LocalDate.now().plusDays(1))
+                .build();
+
+        Product scratchCard = new Product.Builder()
+                .name("Scratch Card")
+                .price(50)
+                .quantity(100)
+                .shippable(false)
+                .exprireDate(null)
+                .build();
+
+        Product expiredMilk = new Product.Builder()
+                .name("Expired Milk")
+                .price(90)
+                .quantity(5)
+                .shippable(true)
+                .weight(300)
+                .exprireDate(LocalDate.now().minusDays(1))
+                .build();
+
+        // Create cart and manager
+        Cart cart = new Cart();
+        Manager manager = new Manager();
+
+        // Add products to cart
+        cart.addProduct(cheese, 2);
+        cart.addProduct(biscuits, 1);
+        cart.addProduct(scratchCard, 1);
+        cart.addProduct(expiredMilk, 1);
+
+        // Simulate customer balance
+        int balance = 500;
+
+        manager.checkout(balance, cart);
     }
 }
