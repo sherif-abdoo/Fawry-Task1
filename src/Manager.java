@@ -5,11 +5,13 @@ import java.util.Map;
 
 public class Manager {
 
-    public void checkout(int balance ,Cart cart){
+    public void checkout( Customer customer,Cart cart){
+        int balance = customer.getBalance();
         if(cart.isEmpty()){
             System.out.println("Cart is empty");
         }else{
             Map<Product,Integer> products = cart.getProducts();
+            System.out.println("**Shippment notice**");
             List<ShippableItem> shippableItems = getShippableItems(products);
             //it prints the shipping notice and return shipping fees
             int shippingFees = ShippingService.send(shippableItems);
@@ -25,7 +27,6 @@ public class Manager {
                 System.out.println("Insufficient balance");
                 return;
             }
-
             balance -= amount;
             finalizePurchase(products);
 
@@ -38,6 +39,7 @@ public class Manager {
             Product product = entry.getKey();
             Integer quantity = entry.getValue();
             if(product.isShippable()){
+                System.out.println(quantity+"X "+product.getName()+"  "+product.getWeight()+"g");
                 shippableItems.add(new ShippableProduct(product,quantity));
             }
         }

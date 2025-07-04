@@ -2,10 +2,8 @@ import java.util.List;
 
 public class ShippingService {
     public static int send(List<ShippableItem> shippableItems) {
-        System.out.println("**Shipment notice**");
         double totalWeight = 0;
         for (ShippableItem shippableItem : shippableItems) {
-            System.out.println(shippableItem.getName());
             totalWeight += shippableItem.getWeight();
         }
         String output = "Total package weight ";

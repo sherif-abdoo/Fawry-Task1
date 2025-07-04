@@ -2,6 +2,9 @@ import java.time.LocalDate;
 
 public class Main {
     public static void main(String[] args) {
+        Cart cart = Cart.getInstance();
+        Manager manager = new Manager();
+
         Product cheese = new Product.Builder()
                 .name("Cheese")
                 .price(100)
@@ -37,19 +40,14 @@ public class Main {
                 .exprireDate(LocalDate.now().minusDays(1))
                 .build();
 
-        // Create cart and manager
-        Cart cart = new Cart();
-        Manager manager = new Manager();
-
         // Add products to cart
         cart.addProduct(cheese, 2);
         cart.addProduct(biscuits, 1);
         cart.addProduct(scratchCard, 1);
         cart.addProduct(expiredMilk, 1);
 
-        // Simulate customer balance
-        int balance = 500;
-
-        manager.checkout(balance, cart);
+        //simulate costumer data
+        Customer customer = new Customer("Sherif",500);
+        manager.checkout(customer, cart);
     }
 }

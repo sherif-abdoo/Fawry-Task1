@@ -4,6 +4,14 @@ import java.util.List;
 import java.util.Map;
 
 public class Cart {
+    private static Cart instance;
+    private Cart(){}
+    public static Cart getInstance(){
+        if(instance == null){
+            instance = new Cart();
+        }
+        return instance;
+    }
     /*to track every product with the requested quantity*/
     private Map<Product, Integer> products =  new HashMap<>();
 
