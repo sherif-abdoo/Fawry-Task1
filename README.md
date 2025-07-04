@@ -1,7 +1,7 @@
 # Design 
 - Interface implementation design
 - used builder with the product class to ensure clean info.
-- Make a usage of single responsibility of methods within every class
+- Applied single responsibility of methods within every class
 - Using Map data structure to be in the best time complexity possible for products searching 
 - Implementing ShippableItem interface in ShippableProduct object to ensure grouping to all shippable product in the cart
 - Abstracting the product class.
@@ -40,65 +40,69 @@ Biscuits added to cart successfully
 Scratch Card added to cart successfully
 Milk is expired
 
-**Shippment notice**
-2X Cheese  200.0g
-1X Biscuits  700.0g
-Total package weight 1.1 kg
+**Shipment Notice**
+2X Cheese     200.0g
+1X Biscuits   700.0g
+Total package weight: 1.1 kg
 
-**Checkout receipt**
-2X Cheese  100
-1X Biscuits  150
-1X Scratch Card  50
+**Checkout Receipt**
+2X Cheese        100
+1X Biscuits      150
+1X Scratch Card   50
 ---------------------
-Subtotal: 400
-Shipping Fees: 30
-Amount: 430
+Subtotal:        400
+Shipping Fees:    30
+Amount:          430
+
 
 ```
 ## edge case 1 : "Insufficient balance"
 
 ```text
-Cheese added to cart successfully
-Biscuits added to cart successfully
-Scratch Card added to cart successfully
-Milk is expired
+Cheese added to cart successfully  
+Biscuits added to cart successfully  
+Scratch Card added to cart successfully  
+Milk is expired  
 
-**Shippment notice**
-2X Cheese  200.0g
-1X Biscuits  700.0g
-Total package weight 1.1 kg
+**Shipment Notice**
+2X Cheese     200.0g  
+1X Biscuits   700.0g  
+Total package weight: 1.1 kg  
 
-**Checkout receipt**
-2X Cheese  100
-1X Biscuits  150
-1X Scratch Card  50
----------------------
-Subtotal: 400
-Shipping Fees: 30
-Amount: 430
+**Checkout Receipt**
+2X Cheese        100  
+1X Biscuits      150  
+1X Scratch Card   50  
+------------------------  
+Subtotal:        400  
+Shipping Fees:    30  
+Amount:          430  
+
 Insufficient balance
+
 ```
 
 ## edge case 2 : "Quantity exceeded" :
 
 ```text
-Cheese added to cart successfully
-Biscuits added to cart successfully
-Scratch Card added to cart successfully
-Milk is expired
-Biscuits Quantity exceeded
+Cheese added to cart successfully  
+Biscuits added to cart successfully  
+Scratch Card added to cart successfully  
+Milk is expired  
+Biscuits quantity exceeded  
 
-**Shippment notice**
-2X Cheese  200.0g
-Total package weight 400.0 g
+**Shipment Notice**
+2X Cheese     200.0g  
+Total package weight: 400.0g  
 
-**Checkout receipt**
-2X Cheese  100
-1X Scratch Card  50
----------------------
-Subtotal: 250
-Shipping Fees: 30
-Amount: 280
+**Checkout Receipt**
+2X Cheese        100  
+1X Scratch Card   50  
+------------------------  
+Subtotal:        250  
+Shipping Fees:    30  
+Amount:          280  
+
 ```
 ## edge case 3 : "Purchase same product twice causing quantity exceeding" : 
 ```java
@@ -117,22 +121,23 @@ manager.checkout(customer, cart);
 ```
 
 ```text
-Cheese added to cart successfully
-Biscuits added to cart successfully
-Biscuits added to cart successfully
-Scratch Card added to cart successfully
-Milk is expired
-Biscuits Quantity exceeded
+Cheese added to cart successfully  
+Biscuits added to cart successfully  
+Biscuits added to cart successfully  
+Scratch Card added to cart successfully  
+Milk is expired  
+Biscuits quantity exceeded  
 
-**Shippment notice**
-2X Cheese  200.0g
-Total package weight 400.0 g
+**Shipment Notice**
+2X Cheese     200.0g  
+Total package weight: 400.0g  
 
-**Checkout receipt**
-2X Cheese  100
-1X Scratch Card  50
----------------------
-Subtotal: 250
-Shipping Fees: 30
-Amount: 280
+**Checkout Receipt**
+2X Cheese        100  
+1X Scratch Card   50  
+------------------------  
+Subtotal:        250  
+Shipping Fees:    30  
+Amount:          280  
+
 ```
