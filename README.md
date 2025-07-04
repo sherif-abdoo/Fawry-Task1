@@ -19,7 +19,7 @@
 Here's how the system works in action:
 
 ```java
-// Create a customer with a budget
+//Simulates costumer data
 Customer customer = new Customer("Sherif", 500);
 Cart cart = customer.getCart();
 
