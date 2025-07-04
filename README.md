@@ -39,10 +39,12 @@ Product added to cart successfully
 Product added to cart successfully
 Product added to cart successfully
 Product is expired
+
 **Shippment notice**
 2X Cheese  200.0g
 1X Biscuits  700.0g
 Total package weight 1.1 kg
+
 **Checkout receipt**
 2X Cheese  100
 1X Biscuits  150
@@ -59,10 +61,12 @@ Product added to cart successfully
 Product added to cart successfully
 Product added to cart successfully
 Product is expired
+
 **Shippment notice**
 2X Cheese  200.0g
 2X Biscuits  700.0g
 Total package weight 1.8 kg
+
 **Checkout receipt**
 2X Cheese  100
 2X Biscuits  150
@@ -81,9 +85,11 @@ Product added to cart successfully
 Quantity exceeded
 Product added to cart successfully
 Product is expired
+
 **Shippment notice**
 2X Cheese  200.0g
 Total package weight 400.0 g
+
 **Checkout receipt**
 2X Cheese  100
 1X Scratch Card  50
