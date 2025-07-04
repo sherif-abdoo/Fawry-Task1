@@ -1,7 +1,7 @@
 public class Customer {
     private String name;
     private int balance;
-    private Cart cart = new Cart();
+    private Cart cart =   new Cart();
 
     public Customer(String name, int balance) {
         this.name = name;
