@@ -24,10 +24,10 @@ Customer customer = new Customer("Sherif", 500);
 Cart cart = customer.getCart();
 
 // Add products to the cart
-cart.addProduct(cheese, 2);         // Valid
-cart.addProduct(biscuits, 1);       // Valid
-cart.addProduct(scratchCard, 1);    // Valid (shippable item)
-cart.addProduct(expiredMilk, 1);    // Will be rejected (expired)
+cart.addProduct(cheese, 2);        
+cart.addProduct(biscuits, 1);      
+cart.addProduct(scratchCard, 1);    
+cart.addProduct(Milk, 1);    
 
 // Perform checkout
 manager.checkout(customer, cart);
@@ -35,10 +35,10 @@ manager.checkout(customer, cart);
 Output: 
 
 ```text
-Product added to cart successfully
-Product added to cart successfully
-Product added to cart successfully
-Product is expired
+Cheese added to cart successfully
+Biscuits added to cart successfully
+Scratch Card added to cart successfully
+Milk is expired
 
 **Shippment notice**
 2X Cheese  200.0g
@@ -53,38 +53,76 @@ Total package weight 1.1 kg
 Subtotal: 400
 Shipping Fees: 30
 Amount: 430
+
 ```
 ## edge case 1 : "Insufficient balance"
 
 ```text
-Product added to cart successfully
-Product added to cart successfully
-Product added to cart successfully
-Product is expired
+Cheese added to cart successfully
+Biscuits added to cart successfully
+Scratch Card added to cart successfully
+Expired Milk is expired
 
 **Shippment notice**
 2X Cheese  200.0g
-2X Biscuits  700.0g
-Total package weight 1.8 kg
+1X Biscuits  700.0g
+Total package weight 1.1 kg
 
 **Checkout receipt**
 2X Cheese  100
-2X Biscuits  150
+1X Biscuits  150
 1X Scratch Card  50
 ---------------------
-Subtotal: 550
+Subtotal: 400
 Shipping Fees: 30
-Amount: 580
+Amount: 430
 Insufficient balance
 ```
 
 ## edge case 2 : "Quantity exceeded" :
 
 ```text
-Product added to cart successfully
-Quantity exceeded
-Product added to cart successfully
-Product is expired
+Cheese added to cart successfully
+Biscuits added to cart successfully
+Scratch Card added to cart successfully
+Expired Milk is expired
+Biscuits Quantity exceeded
+
+**Shippment notice**
+2X Cheese  200.0g
+Total package weight 400.0 g
+
+**Checkout receipt**
+2X Cheese  100
+1X Scratch Card  50
+---------------------
+Subtotal: 250
+Shipping Fees: 30
+Amount: 280
+```
+## edge case 3 : "Purchase same product twice causing quantity exceeding" : 
+```java
+//simulate costumer data
+Customer customer = new Customer("Sherif",400);
+Cart cart = customer.getCart();
+
+// Add products to cart
+cart.addProduct(cheese, 2);
+cart.addProduct(biscuits, 2);
+cart.addProduct(biscuits, 5);
+cart.addProduct(scratchCard, 1);
+cart.addProduct(expiredMilk, 1);
+
+manager.checkout(customer, cart);
+```
+
+```text
+Cheese added to cart successfully
+Biscuits added to cart successfully
+Biscuits added to cart successfully
+Scratch Card added to cart successfully
+Expired Milk is expired
+Biscuits Quantity exceeded
 
 **Shippment notice**
 2X Cheese  200.0g
