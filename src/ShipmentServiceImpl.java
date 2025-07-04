@@ -1,7 +1,7 @@
 import java.util.List;
 
-public class ShippingService {
-    public static int send(List<ShippableItem> shippableItems) {
+public class ShipmentServiceImpl implements ShipmentService {
+    public int send(List<ShippableItem> shippableItems) {
         double totalWeight = 0;
         for (ShippableItem shippableItem : shippableItems) {
             totalWeight += shippableItem.getWeight();
@@ -18,7 +18,7 @@ public class ShippingService {
         else{
             output+=totalWeight+" g";
         }
-        System.out.println(output);
+        System.out.println(output + '\n');
         return shippingPrice;
     }
 }

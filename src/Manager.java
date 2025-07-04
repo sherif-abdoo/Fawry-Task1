@@ -1,20 +1,23 @@
-import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class Manager {
-
+    private final ShipmentServiceImpl shipmentService = new ShipmentServiceImpl();
+    private final ManagerHelper helper = new ManagerHelper();
     public void checkout( Customer customer,Cart cart){
         int balance = customer.getBalance();
         if(cart.isEmpty()){
             System.out.println("Cart is empty");
         }else{
-            Map<Product,Integer> products = cart.getProducts();
+            /*check quantity method makes sure that the required
+             quantity doesn't exceed the stock */
+            Map<Product,Integer> products = helper.checkQuantity(cart.getProducts());
             System.out.println("**Shippment notice**");
-            List<ShippableItem> shippableItems = getShippableItems(products);
+            List<ShippableItem> shippableItems = helper.getShippableItems(products);
+
             //it prints the shipping notice and return shipping fees
-            int shippingFees = ShippingService.send(shippableItems);
+            int shippingFees = shipmentService.send(shippableItems);
             int subtotal = checkOutReceipt(products);
             int amount = subtotal + shippingFees;
             System.out.println("---------------------");
@@ -28,23 +31,12 @@ public class Manager {
                 return;
             }
             balance -= amount;
-            finalizePurchase(products);
+            helper.finalizePurchase(products);
 
         }
     }
 
-    public List<ShippableItem> getShippableItems(Map<Product,Integer> products){
-        List<ShippableItem>shippableItems = new ArrayList<>();
-        for (Map.Entry<Product,Integer> entry : products.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-            if(product.isShippable()){
-                System.out.println(quantity+"X "+product.getName()+"  "+product.getWeight()+"g");
-                shippableItems.add(new ShippableProduct(product,quantity));
-            }
-        }
-        return shippableItems;
-    }
+
 
     public int checkOutReceipt(Map<Product,Integer> products){
         System.out.println("**Checkout receipt**");
@@ -56,12 +48,5 @@ public class Manager {
             totalPrice += product.getPrice() * quantity;
         }
         return  totalPrice;
-    }
-    public void finalizePurchase(Map<Product,Integer> products){
-        for (Map.Entry<Product,Integer> entry : products.entrySet()) {
-            Product product = entry.getKey();
-            Integer quantity = entry.getValue();
-            product.setQuantity(product.getQuantity() - quantity);
-        }
     }
 }
