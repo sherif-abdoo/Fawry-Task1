@@ -61,7 +61,7 @@ Amount: 430
 Cheese added to cart successfully
 Biscuits added to cart successfully
 Scratch Card added to cart successfully
-Expired Milk is expired
+Milk is expired
 
 **Shippment notice**
 2X Cheese  200.0g
@@ -85,7 +85,7 @@ Insufficient balance
 Cheese added to cart successfully
 Biscuits added to cart successfully
 Scratch Card added to cart successfully
-Expired Milk is expired
+Milk is expired
 Biscuits Quantity exceeded
 
 **Shippment notice**
@@ -111,7 +111,7 @@ cart.addProduct(cheese, 2);
 cart.addProduct(biscuits, 2);
 cart.addProduct(biscuits, 5);
 cart.addProduct(scratchCard, 1);
-cart.addProduct(expiredMilk, 1);
+cart.addProduct(Milk, 1);
 
 manager.checkout(customer, cart);
 ```
@@ -121,7 +121,7 @@ Cheese added to cart successfully
 Biscuits added to cart successfully
 Biscuits added to cart successfully
 Scratch Card added to cart successfully
-Expired Milk is expired
+Milk is expired
 Biscuits Quantity exceeded
 
 **Shippment notice**
