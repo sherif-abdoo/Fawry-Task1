@@ -3,7 +3,7 @@
 - used builder with the product class to ensure clean info.
 - Applied single responsibility of methods within every class
 - Using Map data structure to be in the best time complexity possible for products searching 
-- Implementing ShippableItem interface in ShippableProduct object to ensure grouping to all shippable product in the cart
+- Implementing ShippableItem interface in ShippableProduct class to ensure grouping to all shippable product in the cart
 - Abstracting the product class.
 - customer object is immutable to ensure no conflict in changing data in runtime.
 
